@@ -13,9 +13,9 @@ final class BoxOfficeViewModel: ObservableObject {
     @Published private(set) var state: State = .idle
 
     private let mediaType: MediaType
-    private let client: DuckDuckGoClient
+    private let client: TraktClient
 
-    init(mediaType: MediaType, client: DuckDuckGoClient = DuckDuckGoClient()) {
+    init(mediaType: MediaType, client: TraktClient = TraktClient()) {
         self.mediaType = mediaType
         self.client = client
     }
@@ -26,15 +26,7 @@ final class BoxOfficeViewModel: ObservableObject {
 
         state = .loading
         do {
-            let query: String
-            switch mediaType {
-            case .movie:
-                query = "box office movies"
-            case .series:
-                query = "box office series"
-            }
-
-            let results = try await client.search(query: query)
+            let results = try await client.suggest(mediaType: mediaType)
             items = results
             state = .loaded
         } catch {
@@ -42,4 +34,5 @@ final class BoxOfficeViewModel: ObservableObject {
         }
     }
 }
+
 

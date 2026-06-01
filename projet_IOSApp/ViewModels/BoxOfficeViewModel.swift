@@ -13,9 +13,9 @@ final class BoxOfficeViewModel: ObservableObject {
     @Published private(set) var state: State = .idle
 
     private let mediaType: MediaType
-    private let client: TraktClient
+    private let client: TMDBClient
 
-    init(mediaType: MediaType, client: TraktClient = TraktClient()) {
+    init(mediaType: MediaType, client: TMDBClient = TMDBClient()) {
         self.mediaType = mediaType
         self.client = client
     }
@@ -34,5 +34,7 @@ final class BoxOfficeViewModel: ObservableObject {
         }
     }
 }
+
+
 
 

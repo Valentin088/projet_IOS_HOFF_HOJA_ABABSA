@@ -30,9 +30,24 @@ struct FilmSerieItemView: View {
 #Preview {
     NavigationStack {
         List {
-            FilmSerieItemView(item: FilmSerieItem(kind: .movie, title: "Exemple film", snippet: "Un aperçu…", url: URL(string: "https://example.com") ))
-            FilmSerieItemView(item: FilmSerieItem(kind: .series, title: "Exemple série", snippet: "Un aperçu…", url: URL(string: "https://example.com") ))
+            FilmSerieItemView(
+                item: FilmSerieItem(
+                    kind: .movie,
+                    title: "Exemple film",
+                    snippet: "Un aperçu…",
+                    url: URL(string: "https://www.themoviedb.org/movie/0")
+                )
+            )
+            FilmSerieItemView(
+                item: FilmSerieItem(
+                    kind: .series,
+                    title: "Exemple série",
+                    snippet: "Un aperçu…",
+                    url: URL(string: "https://www.themoviedb.org/tv/0")
+                )
+            )
         }
     }
 }
+
 

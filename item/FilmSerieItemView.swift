@@ -1,5 +1,5 @@
 import SwiftUI
-
+@MainActor
 struct FilmSerieItemView: View {
     let item: FilmSerieItem
 

@@ -1,11 +1,10 @@
 import SwiftUI
 
 @main
-struct projet_IOSAppApp: App {
+struct okApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
-

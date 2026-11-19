@@ -13,6 +13,7 @@ struct SeriesView: View {
                 if viewModel.items.isEmpty {
                     Text("Aucune série trouvée")
                         .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("series.empty")
                 } else {
                     List(viewModel.items) { item in
                         NavigationLink {
@@ -30,6 +31,10 @@ struct SeriesView: View {
                     Text(message)
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                    Button("Réessayer") {
+                        Task { await viewModel.load(force: true) }
+                    }
+                    .accessibilityIdentifier("series.retry")
                 }
                 .multilineTextAlignment(.center)
                 .padding()
@@ -37,8 +42,15 @@ struct SeriesView: View {
         }
         .navigationTitle("Séries")
         .searchable(text: $searchText, prompt: "Rechercher une série...")
+        .accessibilityIdentifier("series.root")
         .task {
             await viewModel.load()
+        }
+        .onChange(of: searchText) { oldValue, newValue in
+            // Effacer la recherche doit restaurer la liste des séries populaires.
+            if newValue.isEmpty && !oldValue.isEmpty {
+                Task { await viewModel.load(force: true) }
+            }
         }
         .task(id: searchText) {
             guard !searchText.isEmpty else { return }

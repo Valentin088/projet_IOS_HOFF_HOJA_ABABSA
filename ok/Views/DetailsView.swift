@@ -14,7 +14,7 @@ struct DetailsView: View {
                 poster
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(item.title)
+                    Text(item.displayTitle)
                         .font(.title3)
                         .fontWeight(.bold)
 
@@ -22,14 +22,9 @@ struct DetailsView: View {
                         .font(.headline)
                         .foregroundStyle(.red)
 
-                    if let snippet = item.snippet, !snippet.isEmpty {
-                        Text(snippet)
-                            .font(.body)
-                    } else {
-                        Text("Aucun synopsis disponible.")
-                            .font(.body)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text(item.displaySynopsis)
+                        .font(.body)
+                        .foregroundStyle(item.hasSynopsis ? Color.primary : Color.secondary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -45,6 +40,7 @@ struct DetailsView: View {
             .padding(.vertical)
         }
         .navigationTitle("Détails")
+        .accessibilityIdentifier("details.root")
         .task {
             guard !isLoadingCast else { return }
             isLoadingCast = true
@@ -52,7 +48,7 @@ struct DetailsView: View {
             do {
                 cast = try await client.fetchCast(mediaType: item.kind, id: item.id)
             } catch {
-                castError = error.localizedDescription
+                castError = TMDBError.message(for: error)
             }
             isLoadingCast = false
         }

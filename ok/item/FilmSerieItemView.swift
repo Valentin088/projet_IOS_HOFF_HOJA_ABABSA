@@ -30,12 +30,12 @@ struct FilmSerieItemView: View {
             }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(item.title)
+                Text(item.displayTitle)
                     .font(.headline)
                     .lineLimit(2)
 
-                if let snippet = item.snippet, !snippet.isEmpty {
-                    Text(snippet)
+                if item.hasSynopsis {
+                    Text(item.displaySynopsis)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
@@ -43,6 +43,7 @@ struct FilmSerieItemView: View {
             }
         }
         .padding(.vertical, 2)
+        .accessibilityIdentifier("item.\(item.id)")
     }
 
     private var posterPlaceholder: some View {

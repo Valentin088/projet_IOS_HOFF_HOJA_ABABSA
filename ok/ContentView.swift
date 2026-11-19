@@ -10,12 +10,14 @@ struct ContentView: View {
                     } label: {
                         Label("Films populaires", systemImage: "film")
                     }
+                    .accessibilityIdentifier("home.movies")
 
                     NavigationLink {
                         SeriesView()
                     } label: {
                         Label("Séries populaires", systemImage: "tv")
                     }
+                    .accessibilityIdentifier("home.series")
                 }
 
                 Section("PopCornBox") {

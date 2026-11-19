@@ -13,6 +13,7 @@ struct MoviesView: View {
                 if viewModel.items.isEmpty {
                     Text("Aucun film trouvé")
                         .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("movies.empty")
                 } else {
                     List(viewModel.items) { item in
                         NavigationLink {
@@ -30,6 +31,10 @@ struct MoviesView: View {
                     Text(message)
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                    Button("Réessayer") {
+                        Task { await viewModel.load(force: true) }
+                    }
+                    .accessibilityIdentifier("movies.retry")
                 }
                 .multilineTextAlignment(.center)
                 .padding()
@@ -37,8 +42,15 @@ struct MoviesView: View {
         }
         .navigationTitle("Films")
         .searchable(text: $searchText, prompt: "Rechercher un film...")
+        .accessibilityIdentifier("movies.root")
         .task {
             await viewModel.load()
+        }
+        .onChange(of: searchText) { oldValue, newValue in
+            // Effacer la recherche doit restaurer la liste des films populaires.
+            if newValue.isEmpty && !oldValue.isEmpty {
+                Task { await viewModel.load(force: true) }
+            }
         }
         .task(id: searchText) {
             guard !searchText.isEmpty else { return }

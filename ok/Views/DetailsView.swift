@@ -2,117 +2,49 @@ import SwiftUI
 
 struct DetailsView: View {
     let item: FilmSerieItem
-    
-    // ✅ NOUVEAU : Propriétés pour les acteurs
-    private let client: TMDBClient = TMDBClient()
+
+    private let client = TMDBClient()
     @State private var cast: [Cast] = []
     @State private var isLoadingCast = false
     @State private var castError: String?
-    
+
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                AsyncImage(url: item.largePosterURL) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(12)
-                        .shadow(radius: 10)
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(maxHeight: 400)
-                .padding(.top)
-                
-                VStack(alignment: .leading, spacing: 15) {
+            VStack(spacing: 12) {
+                poster
+
+                VStack(alignment: .leading, spacing: 8) {
                     Text(item.title)
-                        .font(.title)
+                        .font(.title3)
                         .fontWeight(.bold)
-                    
+
                     Text("Synopsis")
                         .font(.headline)
-                        .foregroundColor(.red)
-                    
+                        .foregroundStyle(.red)
+
                     if let snippet = item.snippet, !snippet.isEmpty {
                         Text(snippet)
                             .font(.body)
-                            .lineSpacing(5)
                     } else {
                         Text("Aucun synopsis disponible.")
                             .font(.body)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 12) {
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                VStack(alignment: .leading, spacing: 8) {
                     Text("Acteurs")
                         .font(.headline)
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
 
-                    if isLoadingCast {
-                        ProgressView("Chargement des acteurs...")
-                    } else if let castError {
-                        Text(castError)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    } else if cast.isEmpty {
-                        Text("Aucun acteur trouvé.")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    } else {
-                        LazyVStack(alignment: .leading, spacing: 10) {
-                            ForEach(cast.prefix(10)) { actor in
-                                HStack(alignment: .top, spacing: 12) {
-                                    if let url = actor.profileURL {
-                                        AsyncImage(url: url) { phase in
-                                            switch phase {
-                                            case .empty:
-                                                ProgressView()
-                                                    .frame(width: 44, height: 66)
-                                            case .success(let image):
-                                                image
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(width: 44, height: 66)
-                                                    .clipped()
-                                                    .cornerRadius(6)
-                                            case .failure:
-                                                Image(systemName: "person.crop.rectangle")
-                                                    .frame(width: 44, height: 66)
-                                                    .foregroundStyle(.secondary)
-                                            @unknown default:
-                                                EmptyView()
-                                            }
-                                        }
-                                    } else {
-                                        Image(systemName: "person.crop.rectangle")
-                                            .frame(width: 44, height: 66)
-                                            .foregroundStyle(.secondary)
-                                    }
-
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(actor.name)
-                                            .font(.subheadline)
-                                            .fontWeight(.semibold)
-                                        Text(actor.character)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(2)
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    castContent
                 }
-                .padding(.horizontal)
-
-                Spacer(minLength: 0)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .padding(.vertical)
         }
         .navigationTitle("Détails")
-        .navigationBarTitleDisplayMode(.inline)
-
         .task {
             guard !isLoadingCast else { return }
             isLoadingCast = true
@@ -124,5 +56,92 @@ struct DetailsView: View {
             }
             isLoadingCast = false
         }
+    }
+
+    @ViewBuilder
+    private var poster: some View {
+        AsyncImage(url: item.largePosterURL) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+                    .frame(height: 120)
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 180)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            case .failure:
+                Image(systemName: item.kind == .movie ? "film" : "tv")
+                    .font(.largeTitle)
+                    .foregroundStyle(.secondary)
+                    .frame(height: 120)
+            @unknown default:
+                EmptyView()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var castContent: some View {
+        if isLoadingCast {
+            ProgressView("Chargement des acteurs...")
+        } else if let castError {
+            Text(castError)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        } else if cast.isEmpty {
+            Text("Aucun acteur trouvé.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        } else {
+            ForEach(cast.prefix(8)) { actor in
+                HStack(alignment: .top, spacing: 8) {
+                    actorPhoto(for: actor)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(actor.name)
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                        Text(actor.character)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func actorPhoto(for actor: Cast) -> some View {
+        if let url = actor.profileURL {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(width: 32, height: 48)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 32, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                case .failure:
+                    actorPhotoPlaceholder
+                @unknown default:
+                    EmptyView()
+                }
+            }
+            .frame(width: 32, height: 48)
+        } else {
+            actorPhotoPlaceholder
+                .frame(width: 32, height: 48)
+        }
+    }
+
+    private var actorPhotoPlaceholder: some View {
+        Image(systemName: "person.crop.rectangle")
+            .foregroundStyle(.secondary)
     }
 }

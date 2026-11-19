@@ -2,22 +2,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Accueil", systemImage: "house.fill")
+        NavigationStack {
+            List {
+                Section("Découvrir") {
+                    NavigationLink {
+                        MoviesView()
+                    } label: {
+                        Label("Films populaires", systemImage: "film")
+                    }
+
+                    NavigationLink {
+                        SeriesView()
+                    } label: {
+                        Label("Séries populaires", systemImage: "tv")
+                    }
                 }
-            
-            MoviesView()
-                .tabItem {
-                    Label("Films", systemImage: "film")
+
+                Section("PopCornBox") {
+                    NavigationLink {
+                        HomeView()
+                    } label: {
+                        Label("À propos", systemImage: "info.circle")
+                    }
                 }
-            
-            SeriesView()
-                .tabItem {
-                    Label("Séries", systemImage: "tv")
-                }
+            }
+            .navigationTitle("PopCornBox")
+            .listStyle(.carousel)
         }
-        .tint(.red) // Couleur du thème PopCornBox
     }
+}
+
+#Preview {
+    ContentView()
 }

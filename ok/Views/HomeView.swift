@@ -2,25 +2,29 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        NavigationView {
-            VStack() {
+        ScrollView {
+            VStack(spacing: 10) {
                 Image("logo-removebg-preview")
-                    .frame(width: 300, height: 300)
-                
-                Text("Bienvenue sur PopCornBox")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 60)
+
+                Text("PopCornBox")
+                    .font(.headline)
+
+                Text("Les films et séries du moment, directement sur votre poignet.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
-                
-                Text("Découvrez les films et séries du moment grâce à notre catalogue mis à jour en temps réel.")
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Spacer()
             }
-            .navigationTitle("Accueil")
+            .padding()
         }
+        .navigationTitle("À propos")
     }
-} 
+}
+
+#Preview {
+    NavigationStack {
+        HomeView()
+    }
+}

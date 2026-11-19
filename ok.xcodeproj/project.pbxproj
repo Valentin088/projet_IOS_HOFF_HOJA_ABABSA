@@ -6,9 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D1E2F3A42FCD900000000009 /* PopCornBoxWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1E2F3A42FCD90000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CB1EB592FCD7A8400949B72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E2F3A42FCD900000000004;
+			remoteInfo = PopCornBoxWidget;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4CB1EB612FCD7A8400949B72 /* ok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = PopCornBoxWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D1E2F3A42FCD900000000008 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D1E2F3A42FCD900000000009 /* PopCornBoxWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		4C88E20F2FCD8D3C00AF046D /* Exceptions for "projet_IOSUITests" folder in "ok" target */ = {
@@ -27,6 +56,13 @@
 				projet_IOSTests.swift,
 			);
 			target = 4CB1EB602FCD7A8400949B72 /* ok */;
+		};
+		D1E2F3A42FCD90000000000F /* Exceptions for "PopCornBoxWidget" folder in "PopCornBoxWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D1E2F3A42FCD900000000004 /* PopCornBoxWidget */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -47,10 +83,25 @@
 			path = projet_IOSUITests;
 			sourceTree = "<group>";
 		};
+		D1E2F3A42FCD900000000003 /* PopCornBoxWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D1E2F3A42FCD90000000000F /* Exceptions for "PopCornBoxWidget" folder in "PopCornBoxWidget" target */,
+			);
+			path = PopCornBoxWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4CB1EB5E2FCD7A8400949B72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E2F3A42FCD900000000006 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,6 +114,7 @@
 		4CB1EB582FCD7A8400949B72 = {
 			isa = PBXGroup;
 			children = (
+				D1E2F3A42FCD900000000003 /* PopCornBoxWidget */,
 				4CB1EBB62FCD7C7F00949B72 /* projet_IOSUITests */,
 				4CB1EB632FCD7A8400949B72 /* ok */,
 				4CB1EB622FCD7A8400949B72 /* Products */,
@@ -73,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB1EB612FCD7A8400949B72 /* ok.app */,
+				D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,10 +140,12 @@
 				4CB1EB5D2FCD7A8400949B72 /* Sources */,
 				4CB1EB5E2FCD7A8400949B72 /* Frameworks */,
 				4CB1EB5F2FCD7A8400949B72 /* Resources */,
+				D1E2F3A42FCD900000000008 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D1E2F3A42FCD90000000000A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4CB1EB632FCD7A8400949B72 /* ok */,
@@ -103,6 +158,28 @@
 			productReference = 4CB1EB612FCD7A8400949B72 /* ok.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D1E2F3A42FCD900000000004 /* PopCornBoxWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1E2F3A42FCD90000000000C /* Build configuration list for PBXNativeTarget "PopCornBoxWidget" */;
+			buildPhases = (
+				D1E2F3A42FCD900000000005 /* Sources */,
+				D1E2F3A42FCD900000000006 /* Frameworks */,
+				D1E2F3A42FCD900000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D1E2F3A42FCD900000000003 /* PopCornBoxWidget */,
+			);
+			name = PopCornBoxWidget;
+			packageProductDependencies = (
+			);
+			productName = PopCornBoxWidget;
+			productReference = D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -114,6 +191,9 @@
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					4CB1EB602FCD7A8400949B72 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					D1E2F3A42FCD900000000004 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 				};
@@ -133,12 +213,20 @@
 			projectRoot = "";
 			targets = (
 				4CB1EB602FCD7A8400949B72 /* ok */,
+				D1E2F3A42FCD900000000004 /* PopCornBoxWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4CB1EB5F2FCD7A8400949B72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E2F3A42FCD900000000007 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,7 +243,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1E2F3A42FCD900000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1E2F3A42FCD90000000000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E2F3A42FCD900000000004 /* PopCornBoxWidget */;
+			targetProxy = D1E2F3A42FCD90000000000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4CB1EB6F2FCD7A8500949B72 /* Debug */ = {
@@ -343,6 +446,60 @@
 			};
 			name = Release;
 		};
+		D1E2F3A42FCD90000000000D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PopCornBoxWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1E2F3A42FCD90000000000E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PopCornBoxWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -360,6 +517,15 @@
 			buildConfigurations = (
 				4CB1EB6F2FCD7A8500949B72 /* Debug */,
 				4CB1EB702FCD7A8500949B72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1E2F3A42FCD90000000000C /* Build configuration list for PBXNativeTarget "PopCornBoxWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E2F3A42FCD90000000000D /* Debug */,
+				D1E2F3A42FCD90000000000E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

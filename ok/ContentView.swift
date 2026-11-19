@@ -17,6 +17,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Séries", systemImage: "tv")
                 }
+            
+            QuizView()
+                .tabItem {
+                    Label("Quiz", systemImage: "questionmark.circle.fill")
+                }
         }
         .tint(.red) // Couleur du thème PopCornBox
     }

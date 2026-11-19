@@ -14,11 +14,11 @@ final class BoxOfficeViewModel: ObservableObject {
     @Published private(set) var state: State = .idle
 
     private let mediaType: MediaType
-    private let client: TMDBClient
+    private let client: TMDBProviding
 
-    init(mediaType: MediaType, client: TMDBClient = TMDBClient()) {
+    init(mediaType: MediaType, client: TMDBProviding? = nil) {
         self.mediaType = mediaType
-        self.client = client
+        self.client = client ?? TMDBClient()
     }
 
     // On ajoute le paramètre 'query' ici

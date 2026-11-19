@@ -67,7 +67,11 @@ struct FilmSerieItemView: View {
                     snippet: "Un aperçu…",
                     smallPosterURL: nil,
                     largePosterURL: nil,
-                    url: URL(string: "https://www.themoviedb.org/movie/0")
+                    url: URL(string: "https://www.themoviedb.org/movie/0"),
+                    backdropURL: nil,
+                    releaseYear: 2024,
+                    genreIDs: [28],
+                    rating: 7.5
                 )
             )
             FilmSerieItemView(
@@ -78,7 +82,11 @@ struct FilmSerieItemView: View {
                     snippet: "Un aperçu…",
                     smallPosterURL: nil,
                     largePosterURL: nil,
-                    url: URL(string: "https://www.themoviedb.org/tv/0")
+                    url: URL(string: "https://www.themoviedb.org/tv/0"),
+                    backdropURL: nil,
+                    releaseYear: 2023,
+                    genreIDs: [18],
+                    rating: 8.1
                 )
             )
         }

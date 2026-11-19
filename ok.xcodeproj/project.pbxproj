@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		AA11BB220000000000000009 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CB1EB592FCD7A8400949B72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CB1EB602FCD7A8400949B72;
+			remoteInfo = ok;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4CB1EB612FCD7A8400949B72 /* ok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA11BB220000000000000001 /* projet_IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = projet_IOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -47,10 +58,22 @@
 			path = projet_IOSUITests;
 			sourceTree = "<group>";
 		};
+		AA11BB220000000000000002 /* projet_IOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = projet_IOSTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4CB1EB5E2FCD7A8400949B72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA11BB220000000000000006 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB1EBB62FCD7C7F00949B72 /* projet_IOSUITests */,
+				AA11BB220000000000000002 /* projet_IOSTests */,
 				4CB1EB632FCD7A8400949B72 /* ok */,
 				4CB1EB622FCD7A8400949B72 /* Products */,
 			);
@@ -73,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB1EB612FCD7A8400949B72 /* ok.app */,
+				AA11BB220000000000000001 /* projet_IOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,7 +128,38 @@
 			productReference = 4CB1EB612FCD7A8400949B72 /* ok.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA11BB220000000000000003 /* projet_IOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA11BB220000000000000004 /* Build configuration list for PBXNativeTarget "projet_IOSTests" */;
+			buildPhases = (
+				AA11BB220000000000000005 /* Sources */,
+				AA11BB220000000000000006 /* Frameworks */,
+				AA11BB220000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA11BB220000000000000008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA11BB220000000000000002 /* projet_IOSTests */,
+			);
+			name = projet_IOSTests;
+			packageProductDependencies = (
+			);
+			productName = projet_IOSTests;
+			productReference = AA11BB220000000000000001 /* projet_IOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
+
+/* Begin PBXTargetDependency section */
+		AA11BB220000000000000008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CB1EB602FCD7A8400949B72 /* ok */;
+			targetProxy = AA11BB220000000000000009 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXProject section */
 		4CB1EB592FCD7A8400949B72 /* Project object */ = {
@@ -115,6 +171,10 @@
 				TargetAttributes = {
 					4CB1EB602FCD7A8400949B72 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					AA11BB220000000000000003 /* projet_IOSTests */ = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 4CB1EB602FCD7A8400949B72;
 					};
 				};
 			};
@@ -133,6 +193,7 @@
 			projectRoot = "";
 			targets = (
 				4CB1EB602FCD7A8400949B72 /* ok */,
+				AA11BB220000000000000003 /* projet_IOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -145,10 +206,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA11BB220000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CB1EB5D2FCD7A8400949B72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA11BB220000000000000005 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -221,6 +296,43 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA11BB22000000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.projetIOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ok.app/ok";
+			};
+			name = Debug;
+		};
+		AA11BB22000000000000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.projetIOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ok.app/ok";
 			};
 			name = Release;
 		};
@@ -360,6 +472,15 @@
 			buildConfigurations = (
 				4CB1EB6F2FCD7A8500949B72 /* Debug */,
 				4CB1EB702FCD7A8500949B72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA11BB220000000000000004 /* Build configuration list for PBXNativeTarget "projet_IOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA11BB22000000000000000A /* Debug */,
+				AA11BB22000000000000000B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

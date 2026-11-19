@@ -1,5 +1,27 @@
 import Foundation
 
+// MARK: - Points d'accès TMDB (isolés pour être testables)
+
+enum WidgetAPI {
+    static let baseURL = "https://api.themoviedb.org/3"
+    static let posterBaseURL = "https://image.tmdb.org/t/p/w342"
+    static let tmdbBaseURL = "https://www.themoviedb.org"
+
+    static func popularURL(for mediaType: WidgetMediaType) -> URL? {
+        let endpoint = mediaType == .movie ? "movie/popular" : "tv/popular"
+        return URL(string: "\(baseURL)/\(endpoint)?language=fr-FR&page=1")
+    }
+
+    static func posterURL(path: String?) -> URL? {
+        guard let path else { return nil }
+        return URL(string: "\(posterBaseURL)\(path)")
+    }
+
+    static func detailURL(mediaType: WidgetMediaType, id: Int) -> URL? {
+        URL(string: "\(tmdbBaseURL)/\(mediaType == .movie ? "movie" : "tv")/\(id)")
+    }
+}
+
 // MARK: - Modèle affiché par le widget
 
 struct WidgetMediaItem: Identifiable, Hashable {
@@ -19,12 +41,18 @@ struct WidgetMediaItem: Identifiable, Hashable {
             WidgetMediaItem(
                 id: index,
                 title: title,
-                subtitle: mediaType == .movie ? "Film populaire" : "Série populaire",
+                subtitle: mediaType.subtitle,
                 posterData: nil,
                 url: nil
             )
         }
     }
+}
+
+// MARK: - Abstraction du client (permet d'injecter un faux client dans les tests)
+
+protocol WidgetMediaProviding {
+    func popular(mediaType: WidgetMediaType, limit: Int) async throws -> [WidgetMediaItem]
 }
 
 // MARK: - Décodage TMDB
@@ -51,26 +79,33 @@ private struct TMDBMedia: Decodable {
 /// Le widget est un processus séparé : il possède sa propre couche réseau légère.
 /// Les affiches sont téléchargées ici et transmises dans la timeline sous forme de `Data`,
 /// ce qui garantit un rendu fiable lors des snapshots du widget.
-struct WidgetTMDBClient {
+struct WidgetTMDBClient: WidgetMediaProviding {
     static let shared = WidgetTMDBClient()
 
-    private let bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMWI2MTg5Y2NhMjk4YTNiOTU4YzJjODA0ZmI5NDI5YSIsIm5iZiI6MTc4MDMwNTcxOC41MTYsInN1YiI6IjZhMWQ0ZjM2MzA0N2YyNDcyZTRhZDJjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YjG-DYoizz1MCUCI2fQFbkdlK_dBoTGtKu4yHrcXpKU"
+    let session: URLSession
+    let token: String
+
+    init(
+        session: URLSession = .shared,
+        token: String = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMWI2MTg5Y2NhMjk4YTNiOTU4YzJjODA0ZmI5NDI5YSIsIm5iZiI6MTc4MDMwNTcxOC41MTYsInN1YiI6IjZhMWQ0ZjM2MzA0N2YyNDcyZTRhZDJjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YjG-DYoizz1MCUCI2fQFbkdlK_dBoTGtKu4yHrcXpKU"
+    ) {
+        self.session = session
+        self.token = token
+    }
 
     func popular(mediaType: WidgetMediaType, limit: Int) async throws -> [WidgetMediaItem] {
-        let endpoint = mediaType == .movie ? "movie/popular" : "tv/popular"
-        guard let url = URL(string: "https://api.themoviedb.org/3/\(endpoint)?language=fr-FR&page=1") else {
-            return []
-        }
+        guard let url = WidgetAPI.popularURL(for: mediaType) else { return [] }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.timeoutInterval = 10
         request.setValue("application/json", forHTTPHeaderField: "accept")
-        request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await session.data(for: request)
         let response = try JSONDecoder().decode(TMDBResponse<TMDBMedia>.self, from: data)
         let top = Array(response.results.prefix(limit))
+        let session = self.session
 
         return await withTaskGroup(of: (Int, WidgetMediaItem).self) { group in
             for (index, media) in top.enumerated() {
@@ -78,9 +113,9 @@ struct WidgetTMDBClient {
                     let item = WidgetMediaItem(
                         id: media.id,
                         title: media.title ?? media.name ?? "Sans titre",
-                        subtitle: mediaType == .movie ? "Film populaire" : "Série populaire",
-                        posterData: await Self.posterData(for: media.posterPath),
-                        url: URL(string: "https://www.themoviedb.org/\(mediaType == .movie ? "movie" : "tv")/\(media.id)")
+                        subtitle: mediaType.subtitle,
+                        posterData: await Self.posterData(from: session, path: media.posterPath),
+                        url: WidgetAPI.detailURL(mediaType: mediaType, id: media.id)
                     )
                     return (index, item)
                 }
@@ -94,15 +129,14 @@ struct WidgetTMDBClient {
         }
     }
 
-    private static func posterData(for path: String?) async -> Data? {
-        guard let path, let url = URL(string: "https://image.tmdb.org/t/p/w342\(path)") else {
-            return nil
-        }
+    /// Une affiche manquante ou en échec ne doit jamais empêcher l'affichage de l'entrée.
+    private static func posterData(from session: URLSession, path: String?) async -> Data? {
+        guard let url = WidgetAPI.posterURL(path: path) else { return nil }
 
         var request = URLRequest(url: url)
         request.timeoutInterval = 8
 
-        guard let (data, response) = try? await URLSession.shared.data(for: request),
+        guard let (data, response) = try? await session.data(for: request),
               let http = response as? HTTPURLResponse,
               (200...299).contains(http.statusCode) else {
             return nil

@@ -11,7 +11,26 @@ struct PopularMediaEntry: TimelineEntry {
 }
 
 struct PopularMediaProvider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> PopularMediaEntry {
+    static let itemLimit = 6
+    static let refreshIntervalHours = 3
+
+    let client: any WidgetMediaProviding
+
+    init(client: any WidgetMediaProviding = WidgetTMDBClient.shared) {
+        self.client = client
+    }
+
+    /// Calcul isolé pour pouvoir vérifier la fréquence de rafraîchissement sans attendre 3 heures.
+    func nextRefreshDate(from date: Date = Date()) -> Date {
+        Calendar.current.date(
+            byAdding: .hour,
+            value: Self.refreshIntervalHours,
+            to: date
+        ) ?? date.addingTimeInterval(TimeInterval(Self.refreshIntervalHours * 3_600))
+    }
+
+    /// L'aperçu ne dépend pas du contexte : isolé pour être vérifiable en test unitaire.
+    static func placeholderEntry() -> PopularMediaEntry {
         PopularMediaEntry(
             date: .now,
             items: WidgetMediaItem.samples(for: .movie),
@@ -20,19 +39,22 @@ struct PopularMediaProvider: AppIntentTimelineProvider {
         )
     }
 
+    func placeholder(in context: Context) -> PopularMediaEntry {
+        Self.placeholderEntry()
+    }
+
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> PopularMediaEntry {
         await entry(for: configuration.mediaType)
     }
 
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<PopularMediaEntry> {
         let entry = await entry(for: configuration.mediaType)
-        let next = Calendar.current.date(byAdding: .hour, value: 3, to: Date())
-            ?? Date().addingTimeInterval(3 * 60 * 60)
-        return Timeline(entries: [entry], policy: .after(next))
+        return Timeline(entries: [entry], policy: .after(nextRefreshDate()))
     }
 
-    private func entry(for mediaType: WidgetMediaType) async -> PopularMediaEntry {
-        let items = (try? await WidgetTMDBClient.shared.popular(mediaType: mediaType, limit: 6)) ?? []
+    /// Une panne réseau produit une entrée vide, jamais une exception ni un widget cassé.
+    func entry(for mediaType: WidgetMediaType) async -> PopularMediaEntry {
+        let items = (try? await client.popular(mediaType: mediaType, limit: Self.itemLimit)) ?? []
         return PopularMediaEntry(date: .now, items: items, mediaType: mediaType, isPlaceholder: false)
     }
 }

@@ -60,8 +60,8 @@ private struct SmallWidgetView: View {
 
     private var header: some View {
         HStack(spacing: 5) {
-            Image(systemName: entry.mediaType == .movie ? "film.fill" : "tv.fill")
-            Text(entry.mediaType == .movie ? "Top films" : "Top séries")
+            Image(systemName: entry.mediaType.symbolName)
+            Text(entry.mediaType.headline)
                 .font(.caption.weight(.bold))
         }
     }
@@ -87,8 +87,8 @@ private struct MediumWidgetView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Label(
-                    entry.mediaType == .movie ? "Films populaires" : "Séries populaires",
-                    systemImage: entry.mediaType == .movie ? "film.fill" : "tv.fill"
+                    entry.mediaType.longHeadline,
+                    systemImage: entry.mediaType.symbolName
                 )
                 .font(.headline)
                 Spacer()
@@ -140,8 +140,8 @@ private struct LargeWidgetView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Label(
-                    entry.mediaType == .movie ? "Top films" : "Top séries",
-                    systemImage: entry.mediaType == .movie ? "film.fill" : "tv.fill"
+                    entry.mediaType.headline,
+                    systemImage: entry.mediaType.symbolName
                 )
                 .font(.title3.weight(.bold))
                 Spacer()

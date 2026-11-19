@@ -32,3 +32,22 @@ Le projet a été transformé : l'ancienne application à onglets (Films / Séri
 4. Appui long sur le widget → **Modifier le widget** pour choisir Films ou Séries.
 
 > Le widget nécessite un accès réseau. Le token TMDB se trouve dans `PopCornBoxWidget/WidgetData.swift` (même jeton que l'ancienne application).
+
+## Tests
+
+La cible **PopCornBoxWidgetTests** contient 32 tests unitaires (scheme du même nom) qui couvrent les situations susceptibles de gêner un utilisateur :
+
+- **Réseau** : endpoint film/série, en-têtes d'authentification, erreur HTTP, JSON malformé, perte de connexion.
+- **Données TMDB** : classement des résultats, limite, champs absents (`title`/`name`), liste vide, lien de détail.
+- **Affiches** : téléchargement réussi, affiche manquante ou en échec (l'entrée reste affichée).
+- **Configuration** : choix Films/Séries, valeurs par défaut, icônes et titres associés.
+- **Timeline** : propagation du type configuré, entries vides en cas de panne, rafraîchissement à 3 heures, aperçu sans réseau.
+
+Lancer les tests :
+
+```bash
+xcodebuild -project ok.xcodeproj -scheme PopCornBoxWidgetTests \
+  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 17' test
+```
+
+Pour rendre ces tests possibles, `WidgetTMDBClient` accepte désormais une `URLSession` injectable et le `PopularMediaProvider` accepte un client injectable (un faux client est utilisé dans les tests).

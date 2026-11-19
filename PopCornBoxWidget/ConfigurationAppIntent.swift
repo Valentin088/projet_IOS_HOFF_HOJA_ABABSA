@@ -13,6 +13,13 @@ enum WidgetMediaType: String, AppEnum {
     ]
 }
 
+extension WidgetMediaType {
+    var symbolName: String { self == .movie ? "film.fill" : "tv.fill" }
+    var headline: String { self == .movie ? "Top films" : "Top séries" }
+    var longHeadline: String { self == .movie ? "Films populaires" : "Séries populaires" }
+    var subtitle: String { self == .movie ? "Film populaire" : "Série populaire" }
+}
+
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "PopCornBox"
     static var description = IntentDescription("Choisissez d'afficher les films ou les séries populaires du moment.")

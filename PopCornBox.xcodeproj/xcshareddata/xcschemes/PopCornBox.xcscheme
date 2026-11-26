@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-               BuildableName = "ok.app"
-               BlueprintName = "ok"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopCornBox.app"
+               BlueprintName = "PopCornBox"
+               ReferencedContainer = "container:PopCornBox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA0000000000000000000001"
-               BuildableName = "okTests.xctest"
-               BlueprintName = "okTests"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopCornBoxTests.xctest"
+               BlueprintName = "PopCornBoxTests"
+               ReferencedContainer = "container:PopCornBox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB0000000000000000000001"
-               BuildableName = "okUITests.xctest"
-               BlueprintName = "okUITests"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopCornBoxUITests.xctest"
+               BlueprintName = "PopCornBoxUITests"
+               ReferencedContainer = "container:PopCornBox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA0000000000000000000001"
-               BuildableName = "okTests.xctest"
-               BlueprintName = "okTests"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopCornBoxTests.xctest"
+               BlueprintName = "PopCornBoxTests"
+               ReferencedContainer = "container:PopCornBox.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -71,9 +71,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB0000000000000000000001"
-               BuildableName = "okUITests.xctest"
-               BlueprintName = "okUITests"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopCornBoxUITests.xctest"
+               BlueprintName = "PopCornBoxUITests"
+               ReferencedContainer = "container:PopCornBox.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -93,9 +93,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-            BuildableName = "ok.app"
-            BlueprintName = "ok"
-            ReferencedContainer = "container:ok.xcodeproj">
+            BuildableName = "PopCornBox.app"
+            BlueprintName = "PopCornBox"
+            ReferencedContainer = "container:PopCornBox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -110,9 +110,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-            BuildableName = "ok.app"
-            BlueprintName = "ok"
-            ReferencedContainer = "container:ok.xcodeproj">
+            BuildableName = "PopCornBox.app"
+            BlueprintName = "PopCornBox"
+            ReferencedContainer = "container:PopCornBox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

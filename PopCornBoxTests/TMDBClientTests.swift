@@ -1,5 +1,5 @@
 import XCTest
-@testable import ok
+@testable import PopCornBox
 
 @MainActor
 final class TMDBClientTests: XCTestCase {

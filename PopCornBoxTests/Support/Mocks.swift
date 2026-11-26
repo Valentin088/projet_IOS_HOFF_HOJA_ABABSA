@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import ok
+@testable import PopCornBox
 
 // MARK: - Données de test
 

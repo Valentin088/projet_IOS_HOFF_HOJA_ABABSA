@@ -74,6 +74,8 @@ xcodebuild test \
 - `watch` : prototype Apple Watch.
 - `widget` : prototype WidgetKit.
 
-## Auteur
+## Auteurs
 
-Valentin Hoja ([@Valentin088](https://github.com/Valentin088)).
+- Valentin Hoja — [@Valentin088](https://github.com/Valentin088)
+- Rafael Hoff — [@Rafrigirateur](https://github.com/Rafrigirateur)
+- Rayan Ababsa — [@raracodkebab](https://github.com/raracodkebab)

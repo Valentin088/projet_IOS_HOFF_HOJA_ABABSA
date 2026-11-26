@@ -1,5 +1,5 @@
 import Foundation
-@testable import ok
+@testable import PopcornBox
 
 /// Faux client TMDB : aucun appel réseau, réponses contrôlées par les tests.
 final class MockTMDBClient: TMDBProviding {

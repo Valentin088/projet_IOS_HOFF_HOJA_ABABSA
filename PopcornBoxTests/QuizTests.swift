@@ -1,5 +1,5 @@
 import XCTest
-@testable import ok
+@testable import PopcornBox
 
 @MainActor
 final class QuizTests: XCTestCase {

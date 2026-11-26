@@ -1,6 +1,6 @@
 import XCTest
 
-final class projet_IOSUITests: XCTestCase {
+final class PopcornBoxUITests: XCTestCase {
     func testExample() throws {
         XCTAssertTrue(true)
     }

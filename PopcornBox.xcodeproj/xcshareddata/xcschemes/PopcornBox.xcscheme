@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-               BuildableName = "ok.app"
-               BlueprintName = "ok"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopcornBox.app"
+               BlueprintName = "PopcornBox"
+               ReferencedContainer = "container:PopcornBox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA11BB220000000000000003"
-               BuildableName = "projet_IOSTests.xctest"
-               BlueprintName = "projet_IOSTests"
-               ReferencedContainer = "container:ok.xcodeproj">
+               BuildableName = "PopcornBoxTests.xctest"
+               BlueprintName = "PopcornBoxTests"
+               ReferencedContainer = "container:PopcornBox.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-            BuildableName = "ok.app"
-            BlueprintName = "ok"
-            ReferencedContainer = "container:ok.xcodeproj">
+            BuildableName = "PopcornBox.app"
+            BlueprintName = "PopcornBox"
+            ReferencedContainer = "container:PopcornBox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -73,9 +73,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CB1EB602FCD7A8400949B72"
-            BuildableName = "ok.app"
-            BlueprintName = "ok"
-            ReferencedContainer = "container:ok.xcodeproj">
+            BuildableName = "PopcornBox.app"
+            BlueprintName = "PopcornBox"
+            ReferencedContainer = "container:PopcornBox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

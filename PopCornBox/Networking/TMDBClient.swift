@@ -194,7 +194,11 @@ final class TMDBClient: TMDBClientProtocol {
             snippet: movie.overview,
             smallPosterURL: movie.smallPosterURL,
             largePosterURL: movie.largePosterURL,
-            url: URL(string: "https://www.themoviedb.org/movie/\(movie.id)")
+            url: URL(string: "https://www.themoviedb.org/movie/\(movie.id)"),
+            backdropURL: movie.backdropURL,
+            releaseYear: movie.releaseYear,
+            genreIDs: movie.genreIDs,
+            rating: movie.voteAverage
         )
     }
 
@@ -206,7 +210,11 @@ final class TMDBClient: TMDBClientProtocol {
             snippet: show.overview,
             smallPosterURL: show.smallPosterURL,
             largePosterURL: show.largePosterURL,
-            url: URL(string: "https://www.themoviedb.org/tv/\(show.id)")
+            url: URL(string: "https://www.themoviedb.org/tv/\(show.id)"),
+            backdropURL: show.backdropURL,
+            releaseYear: show.releaseYear,
+            genreIDs: show.genreIDs,
+            rating: show.voteAverage
         )
     }
 }

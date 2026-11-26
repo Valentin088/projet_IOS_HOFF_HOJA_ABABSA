@@ -18,6 +18,13 @@ struct ContentView: View {
                         Label("Séries populaires", systemImage: "tv")
                     }
                     .accessibilityIdentifier("home.series")
+
+                    NavigationLink {
+                        QuizView()
+                    } label: {
+                        Label("Quiz", systemImage: "questionmark.circle.fill")
+                    }
+                    .accessibilityIdentifier("home.quiz")
                 }
 
                 Section("PopCornBox") {

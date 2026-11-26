@@ -7,7 +7,7 @@ enum MediaType: Equatable {
 }
 
 // 2. Modèle unifié utilisé partout dans l'interface graphique
-struct FilmSerieItem: Identifiable {
+struct FilmSerieItem: Identifiable, Equatable {
     let id: Int
     let kind: MediaType
     let title: String
@@ -15,6 +15,39 @@ struct FilmSerieItem: Identifiable {
     let smallPosterURL: URL?
     let largePosterURL: URL?
     let url: URL?
+
+    // Champs utilisés par le quizz. Les valeurs par défaut de l'init gardent
+    // les initialisations existantes compatibles.
+    let backdropURL: URL?
+    let releaseYear: Int?
+    let genreIDs: [Int]
+    let rating: Double?
+
+    init(
+        id: Int,
+        kind: MediaType,
+        title: String,
+        snippet: String?,
+        smallPosterURL: URL?,
+        largePosterURL: URL?,
+        url: URL?,
+        backdropURL: URL? = nil,
+        releaseYear: Int? = nil,
+        genreIDs: [Int] = [],
+        rating: Double? = nil
+    ) {
+        self.id = id
+        self.kind = kind
+        self.title = title
+        self.snippet = snippet
+        self.smallPosterURL = smallPosterURL
+        self.largePosterURL = largePosterURL
+        self.url = url
+        self.backdropURL = backdropURL
+        self.releaseYear = releaseYear
+        self.genreIDs = genreIDs
+        self.rating = rating
+    }
 
     /// Un synopsis vide ou composé uniquement d'espaces ne doit pas être affiché.
     var hasSynopsis: Bool {

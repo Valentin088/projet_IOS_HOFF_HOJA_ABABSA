@@ -34,6 +34,19 @@ final class AppUITests: XCTestCase {
 
         waitFor(element("home.movies"))
         waitFor(element("home.series"))
+        waitFor(element("home.quiz"))
+    }
+
+    func testQuizDisplaysAQuestionAndAcceptsAnAnswer() {
+        launchApp()
+        waitFor(element("home.quiz")).tap()
+
+        waitFor(element("quiz.root"))
+        let firstAnswer = waitFor(element("quiz.answer.0"))
+        firstAnswer.tap()
+
+        waitFor(element("quiz.next"))
+        XCTAssertTrue(element("quiz.feedback.correct").exists || element("quiz.feedback.incorrect").exists)
     }
 
     // MARK: - Films

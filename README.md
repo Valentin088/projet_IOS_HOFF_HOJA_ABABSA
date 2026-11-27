@@ -2,7 +2,7 @@
 
 Application iOS SwiftUI de découverte de films et séries, avec un quiz culturel généré à partir du catalogue [TMDB](https://www.themoviedb.org/).
 
-![Icône PopCornBox](PopCornBox/PopCornBox/logo.png)
+![Logo PopCornBox](PopcornBox/logo.png)
 
 ## Fonctionnalités
 
@@ -18,17 +18,17 @@ Application iOS SwiftUI de découverte de films et séries, avec un quiz culture
 
 ```
 .
-├── PopCornBox/                 # Application iOS
-│   ├── PopCornBoxApp.swift     # Point d'entrée @main
+├── PopcornBox/                 # Application iOS
+│   ├── PopcornBoxApp.swift     # Point d'entrée @main
 │   ├── ContentView.swift       # TabView (Accueil / Films / Séries / Quiz)
 │   ├── Models/                 # FilmSerieItem, QuizQuestion, QuizGenerator
 │   ├── Networking/             # Client et modèles TMDB
 │   ├── ViewModels/             # BoxOfficeViewModel, QuizViewModel
 │   ├── Views/                  # Écrans SwiftUI
 │   └── Assets.xcassets/        # Icône, couleur d'accent, logo
-├── PopCornBoxTests/            # Tests unitaires
-├── PopCornBoxUITests/          # Tests d'interface
-└── PopCornBox.xcodeproj        # Projet Xcode (cibles PopCornBox et PopCornBoxTests)
+├── PopcornBoxTests/            # Tests unitaires
+├── PopcornBoxUITests/          # Tests d'interface
+└── PopcornBox.xcodeproj        # Projet Xcode (cibles PopcornBox et PopcornBoxTests)
 ```
 
 ## Prérequis
@@ -38,25 +38,25 @@ Application iOS SwiftUI de découverte de films et séries, avec un quiz culture
 - Aucun gestionnaire de dépendances (pas de CocoaPods ni de Swift Package à installer)
 - Connexion réseau pour les appels à l'API TMDB
 
-> Sur la branche `main`, le token de lecture TMDB est embarqué dans `PopCornBox/Networking/TMDBClient.swift`. Pour une mise en production, le déplacer dans une configuration sécurisée ou un service backend.
+> Sur la branche `main`, le token de lecture TMDB est embarqué dans `PopcornBox/Networking/TMDBClient.swift`. Pour une mise en production, le déplacer dans une configuration sécurisée ou un service backend.
 
 ## Lancer le projet
 
 ```bash
 git clone https://github.com/Valentin088/projet_IOS_HOFF_HOJA_ABABSA.git
 cd projet_IOS_HOFF_HOJA_ABABSA
-open PopCornBox.xcodeproj
+open PopcornBox.xcodeproj
 ```
 
 Dans Xcode :
 
 1. Sélectionne un simulateur iOS (ou un appareil connecté).
-2. Choisis le schéma **PopCornBox**.
+2. Choisis le schéma **PopcornBox**.
 3. Lance avec **⌘R**.
 
 ## Lancer les tests
 
-Depuis Xcode : **⌘U** avec le schéma `PopCornBox` sélectionné.
+Depuis Xcode : **⌘U** avec le schéma `PopcornBox` sélectionné.
 
 En ligne de commande :
 
@@ -64,7 +64,7 @@ En ligne de commande :
 xcrun simctl list devices available   # pour connaître un simulateur installé
 xcodebuild test \
   -project PopcornBox.xcodeproj \
-  -scheme PopCornBox \
+  -scheme PopcornBox \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 ```
 

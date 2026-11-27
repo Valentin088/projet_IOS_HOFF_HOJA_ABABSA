@@ -35,7 +35,6 @@
 		D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = PopCornBoxWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C8D9E02FCD900000000002 /* PopCornBoxWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopCornBoxWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C8D9E02FCD90000000000E /* PopCornBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopCornBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7C8D9E02FCD90000000000F /* AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -292,6 +291,10 @@
 					B7C8D9E02FCD900000000001 = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					B7C8D9E02FCD90000000000C = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 4CB1EB602FCD7A8400949B72;
+					};
 				};
 			};
 			buildConfigurationList = 4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "PopCornBox" */;
@@ -364,19 +367,11 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXBuildFile section for UI tests - added */
-		B7C8D9E02FCD900000000014 /* PBXBuildFile */ = {
-			isa = PBXBuildFile;
-			fileRef = B7C8D9E02FCD90000000000F /* AppUITests.swift */;
-		};
-/* End PBXBuildFile section */
-
 /* Begin PBXSourcesBuildPhase section for UI tests - added */
 		B7C8D9E02FCD900000000011 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7C8D9E02FCD900000000014 /* PBXBuildFile */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +670,7 @@
 			};
 			name = Debug;
 		};
-		B7C8D9E02FCD90000000000B /* Release */ = {
+		B7C8D9E02FCD900000000017 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -701,6 +696,8 @@
 		B7C8D9E02FCD900000000015 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopCornBox.app/PopCornBox";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -724,6 +721,8 @@
 		B7C8D9E02FCD900000000016 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopCornBox.app/PopCornBox";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -778,7 +777,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B7C8D9E02FCD90000000000A /* Debug */,
-				B7C8D9E02FCD90000000000B /* Release */,
+				B7C8D9E02FCD900000000017 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

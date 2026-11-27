@@ -3,6 +3,8 @@
 Application watchOS SwiftUI qui affiche les films et séries populaires de TMDB,
 permet de les rechercher et de consulter leur synopsis et leur distribution.
 
+![Logo PopCornBox](PopcornBox/logo.png)
+
 ## Tests
 
 Deux cibles de test sont configurées dans le schéma partagé `PopCornBox` :

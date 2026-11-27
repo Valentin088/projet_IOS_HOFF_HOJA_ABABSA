@@ -2,7 +2,7 @@
 
 Application iOS SwiftUI de découverte de films et séries, avec un quiz culturel généré à partir du catalogue [TMDB](https://www.themoviedb.org/).
 
-![Icône PopCornBox](PopCornBox/logo.png)
+![Icône PopCornBox](PopCornBox/PopCornBox/logo.png)
 
 ## Fonctionnalités
 

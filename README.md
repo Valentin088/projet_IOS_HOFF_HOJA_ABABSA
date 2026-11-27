@@ -2,6 +2,8 @@
 
 Le projet a été transformé : l'ancienne application à onglets (Films / Séries) est remplacée par un **widget WidgetKit** affiché sur l'écran d'accueil.
 
+![Logo PopCornBox](PopCornBox/logo.png)
+
 ## Structure
 
 | Dossier / fichier | Rôle |

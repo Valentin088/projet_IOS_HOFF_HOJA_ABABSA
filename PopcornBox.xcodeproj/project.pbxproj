@@ -27,7 +27,6 @@
 		4CB1EB612FCD7A8400949B72 /* PopcornBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA11BB220000000000000001 /* PopcornBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA11BB220000000000000010 /* PopcornBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA11BB220000000000000017 /* PopcornBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornBoxUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -220,6 +219,10 @@
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = 4CB1EB602FCD7A8400949B72;
 					};
+					AA11BB22000000000000000D /* PopcornBoxUITests */ = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 4CB1EB602FCD7A8400949B72;
+					};
 				};
 			};
 			buildConfigurationList = 4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "PopcornBox" */;
@@ -277,19 +280,11 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXBuildFile section for UI tests - added */
-		AA11BB220000000000000014 /* PBXBuildFile */ = {
-			isa = PBXBuildFile;
-			fileRef = AA11BB220000000000000017 /* PopcornBoxUITests.swift */;
-		};
-/* End PBXBuildFile section */
-
 /* Begin PBXSourcesBuildPhase section for UI tests - added */
 		AA11BB220000000000000011 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA11BB220000000000000014 /* PBXBuildFile */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +371,7 @@
 			};
 			name = Release;
 		};
-		AA11BB22000000000000000A /* Debug */ = {
+		AA11BB22000000000000001E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -535,6 +530,8 @@
 		AA11BB22000000000000001C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopcornBox.app/PopcornBox";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -582,6 +579,8 @@
 		AA11BB22000000000000001D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopcornBox.app/PopcornBox";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -650,7 +649,7 @@
 		AA11BB220000000000000004 /* Build configuration list for PBXNativeTarget "PopcornBoxTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA11BB22000000000000000A /* Debug */,
+				AA11BB22000000000000001E /* Debug */,
 				AA11BB22000000000000000B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

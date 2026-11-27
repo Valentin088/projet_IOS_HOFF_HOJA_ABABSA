@@ -53,3 +53,16 @@ xcodebuild -project PopCornBox.xcodeproj -scheme PopCornBoxWidgetTests \
 ```
 
 Pour rendre ces tests possibles, `WidgetTMDBClient` accepte désormais une `URLSession` injectable et le `PopularMediaProvider` accepte un client injectable (un faux client est utilisé dans les tests).
+
+## Tests UI
+
+La cible **PopCornBoxUITests** contient des tests d'interface pour l'application hôte (`PopCornBox`). Elle vérifie que l'app se lance et affiche tous ses éléments (logo, titre, sous-titre, instructions). Aucun appel réseau n'est nécessaire.
+
+Lancer les tests UI :
+
+```bash
+xcodebuild -project PopCornBox.xcodeproj -scheme PopCornBox \
+  -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 17' test
+```
+
+Dans Xcode : sélectionner le schéma `PopCornBox`, un simulateur iOS, puis `Cmd + U`.

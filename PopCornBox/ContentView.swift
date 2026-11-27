@@ -10,15 +10,18 @@ struct ContentView: View {
             Image(systemName: "popcorn.fill")
                 .font(.system(size: 72))
                 .foregroundStyle(.red)
+                .accessibilityIdentifier("host.logo")
 
             Text("PopCornBox")
                 .font(.largeTitle.bold())
+                .accessibilityIdentifier("host.title")
 
             Text("Le catalogue est désormais disponible directement sur votre écran d'accueil.")
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
+                .accessibilityIdentifier("host.subtitle")
 
             VStack(alignment: .leading, spacing: 10) {
                 InstructionRow(number: "1", text: "Quittez cette application et retournez sur l'écran d'accueil.")
@@ -27,15 +30,16 @@ struct ContentView: View {
             }
             .padding()
             .background(.quaternary.opacity(0.4), in: RoundedRectangle(cornerRadius: 16))
+            .accessibilityIdentifier("host.instructions")
 
             Text("Appui long sur le widget pour choisir Films ou Séries.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-
-            Spacer()
+                .accessibilityIdentifier("host.widgetHint")
         }
         .padding()
+        .accessibilityIdentifier("host.root")
     }
 }
 

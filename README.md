@@ -12,7 +12,7 @@ Le projet a été transformé : l'ancienne application à onglets (Films / Séri
 | `PopCornBoxWidget/ConfigurationAppIntent.swift` | Choix **Films** ou **Séries** (appui long → Modifier le widget) |
 | `PopCornBoxWidget/WidgetData.swift` | Client TMDB dédié au widget + modèle d'affichage |
 | `PopCornBoxWidget/WidgetViews.swift` | Vues `small` / `medium` / `large` |
-| `ok/` | Application hôte minimale, obligatoire sur iOS pour contenir l'extension |
+| `PopCornBox/` | Application hôte minimale, obligatoire sur iOS pour contenir l'extension |
 | `_legacy_app_sources/` | Anciennes vues et couche réseau de l'app, conservées mais **non compilées** |
 
 ## Comportement du widget
@@ -26,8 +26,8 @@ Le projet a été transformé : l'ancienne application à onglets (Films / Séri
 
 ## Utilisation
 
-1. Ouvrir `ok.xcodeproj` dans Xcode.
-2. Choisir la cible **PopCornBoxWidget** pour prévisualiser le widget dans Xcode, ou la cible **ok** pour installer l'app hôte sur un simulateur/appareil.
+1. Ouvrir `PopCornBox.xcodeproj` dans Xcode.
+2. Choisir la cible **PopCornBoxWidget** pour prévisualiser le widget dans Xcode, ou la cible **PopCornBox** pour installer l'app hôte sur un simulateur/appareil.
 3. Installer l'app, revenir sur l'écran d'accueil, appui long → `+` → rechercher **PopCornBox**.
 4. Appui long sur le widget → **Modifier le widget** pour choisir Films ou Séries.
 
@@ -46,7 +46,7 @@ La cible **PopCornBoxWidgetTests** contient 32 tests unitaires (scheme du même 
 Lancer les tests :
 
 ```bash
-xcodebuild -project ok.xcodeproj -scheme PopCornBoxWidgetTests \
+xcodebuild -project PopCornBox.xcodeproj -scheme PopCornBoxWidgetTests \
   -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 17' test
 ```
 

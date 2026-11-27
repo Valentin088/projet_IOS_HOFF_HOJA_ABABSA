@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct okApp: App {
+struct PopCornBoxApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

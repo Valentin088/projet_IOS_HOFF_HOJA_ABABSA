@@ -21,7 +21,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4CB1EB612FCD7A8400949B72 /* ok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CB1EB612FCD7A8400949B72 /* PopCornBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopCornBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = PopCornBoxWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C8D9E02FCD900000000002 /* PopCornBoxWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopCornBoxWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -41,14 +41,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4C88E20F2FCD8D3C00AF046D /* Exceptions for "projet_IOSUITests" folder in "ok" target */ = {
+		4C88E20F2FCD8D3C00AF046D /* Exceptions for "projet_IOSUITests" folder in "PopCornBox" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				projet_IOSUITests.swift,
 			);
-			target = 4CB1EB602FCD7A8400949B72 /* ok */;
+			target = 4CB1EB602FCD7A8400949B72 /* PopCornBox */;
 		};
-		4CB1EBBE2FCD7E5A00949B72 /* Exceptions for "ok" folder in "ok" target */ = {
+		4CB1EBBE2FCD7E5A00949B72 /* Exceptions for "PopCornBox" folder in "PopCornBox" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				assets/.keep,
@@ -56,7 +56,7 @@
 				item/.keep,
 				projet_IOSTests.swift,
 			);
-			target = 4CB1EB602FCD7A8400949B72 /* ok */;
+			target = 4CB1EB602FCD7A8400949B72 /* PopCornBox */;
 		};
 		D1E2F3A42FCD90000000000F /* Exceptions for "PopCornBoxWidget" folder in "PopCornBoxWidget" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -76,18 +76,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4CB1EB632FCD7A8400949B72 /* ok */ = {
+		4CB1EB632FCD7A8400949B72 /* PopCornBox */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				4CB1EBBE2FCD7E5A00949B72 /* Exceptions for "ok" folder in "ok" target */,
+				4CB1EBBE2FCD7E5A00949B72 /* Exceptions for "PopCornBox" folder in "PopCornBox" target */,
 			);
-			path = ok;
+			path = PopCornBox;
 			sourceTree = "<group>";
 		};
 		4CB1EBB62FCD7C7F00949B72 /* projet_IOSUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				4C88E20F2FCD8D3C00AF046D /* Exceptions for "projet_IOSUITests" folder in "ok" target */,
+				4C88E20F2FCD8D3C00AF046D /* Exceptions for "projet_IOSUITests" folder in "PopCornBox" target */,
 			);
 			path = projet_IOSUITests;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 				B7C8D9E02FCD900000000003 /* PopCornBoxWidgetTests */,
 				D1E2F3A42FCD900000000003 /* PopCornBoxWidget */,
 				4CB1EBB62FCD7C7F00949B72 /* projet_IOSUITests */,
-				4CB1EB632FCD7A8400949B72 /* ok */,
+				4CB1EB632FCD7A8400949B72 /* PopCornBox */,
 				4CB1EB622FCD7A8400949B72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 		4CB1EB622FCD7A8400949B72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4CB1EB612FCD7A8400949B72 /* ok.app */,
+				4CB1EB612FCD7A8400949B72 /* PopCornBox.app */,
 				D1E2F3A42FCD900000000001 /* PopCornBoxWidget.appex */,
 				B7C8D9E02FCD900000000002 /* PopCornBoxWidgetTests.xctest */,
 			);
@@ -164,9 +164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4CB1EB602FCD7A8400949B72 /* ok */ = {
+		4CB1EB602FCD7A8400949B72 /* PopCornBox */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CB1EB6E2FCD7A8500949B72 /* Build configuration list for PBXNativeTarget "ok" */;
+			buildConfigurationList = 4CB1EB6E2FCD7A8500949B72 /* Build configuration list for PBXNativeTarget "PopCornBox" */;
 			buildPhases = (
 				4CB1EB5D2FCD7A8400949B72 /* Sources */,
 				4CB1EB5E2FCD7A8400949B72 /* Frameworks */,
@@ -179,14 +179,14 @@
 				D1E2F3A42FCD90000000000A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				4CB1EB632FCD7A8400949B72 /* ok */,
+				4CB1EB632FCD7A8400949B72 /* PopCornBox */,
 				4CB1EBB62FCD7C7F00949B72 /* projet_IOSUITests */,
 			);
-			name = ok;
+			name = PopCornBox;
 			packageProductDependencies = (
 			);
-			productName = ok;
-			productReference = 4CB1EB612FCD7A8400949B72 /* ok.app */;
+			productName = PopCornBox;
+			productReference = 4CB1EB612FCD7A8400949B72 /* PopCornBox.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D1E2F3A42FCD900000000004 /* PopCornBoxWidget */ = {
@@ -255,7 +255,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "ok" */;
+			buildConfigurationList = 4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "PopCornBox" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -269,7 +269,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4CB1EB602FCD7A8400949B72 /* ok */,
+				4CB1EB602FCD7A8400949B72 /* PopCornBox */,
 				D1E2F3A42FCD900000000004 /* PopCornBoxWidget */,
 				B7C8D9E02FCD900000000001 /* PopCornBoxWidgetTests */,
 			);
@@ -342,7 +342,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ok/Info.plist;
+				INFOPLIST_FILE = PopCornBox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -354,7 +354,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -375,7 +375,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ok/Info.plist;
+				INFOPLIST_FILE = PopCornBox/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -387,7 +387,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -533,7 +533,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox.PopCornBoxWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -559,7 +559,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox.PopCornBoxWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -586,7 +586,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidgetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox.PopCornBoxWidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -609,7 +609,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lez.ok.PopCornBoxWidgetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = lez.PopCornBox.PopCornBoxWidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -621,7 +621,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "ok" */ = {
+		4CB1EB5C2FCD7A8400949B72 /* Build configuration list for PBXProject "PopCornBox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CB1EB712FCD7A8500949B72 /* Debug */,
@@ -630,7 +630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CB1EB6E2FCD7A8500949B72 /* Build configuration list for PBXNativeTarget "ok" */ = {
+		4CB1EB6E2FCD7A8500949B72 /* Build configuration list for PBXNativeTarget "PopCornBox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CB1EB6F2FCD7A8500949B72 /* Debug */,

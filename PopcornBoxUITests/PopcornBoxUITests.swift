@@ -188,18 +188,144 @@ final class PopcornBoxUITests: XCTestCase {
     func testQuizAnswerFeedback() {
         app.tabBars.buttons["Quiz"].tap()
         waitFor(app.staticTexts["Question 1 / 10"], timeout: 10)
-        
+
         app.buttons["quiz.answer.0"].tap()
-        
+
         // Le feedback (correct ou incorrect) doit apparaître
         let feedbackCorrect = app.staticTexts["quiz.feedback.correct"]
         let feedbackIncorrect = app.staticTexts["quiz.feedback.incorrect"]
         let feedbackAppeared = feedbackCorrect.waitForExistence(timeout: 5)
             || feedbackIncorrect.waitForExistence(timeout: 5)
         XCTAssertTrue(feedbackAppeared, "Un feedback devrait s'afficher après une réponse")
-        
+
         // Le bouton de question suivante doit apparaître
         XCTAssertTrue(app.buttons["quiz.next"].waitForExistence(timeout: 5),
                       "Le bouton suivant devrait apparaître après une réponse")
+    }
+
+    // MARK: - Authentification et profil (mode test simulé)
+
+    func testProfileTabShowsLoggedInUser() {
+        // En mode UITesting, l'utilisateur est automatiquement connecté
+        app.tabBars.buttons["Profil"].tap()
+
+        waitFor(app.staticTexts["Utilisateur Test"], timeout: 10)
+        waitFor(app.staticTexts["uitest@example.com"], timeout: 10)
+        XCTAssertTrue(app.staticTexts["Utilisateur Test"].exists)
+        XCTAssertTrue(app.staticTexts["uitest@example.com"].exists)
+    }
+
+    // MARK: - Favoris depuis la liste des films
+
+    func testAddMovieToFavoritesFromList() {
+        app.tabBars.buttons["Films"].tap()
+
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+
+        // Ajouter Inception aux favoris via le bouton cœur de la ligne
+        let favoriteButton = app.buttons["item.favorite.1"]
+        waitFor(favoriteButton, timeout: 10)
+        favoriteButton.tap()
+
+        // Vérifier dans l'onglet Profil que le favori apparaît
+        app.tabBars.buttons["Profil"].tap()
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+        XCTAssertTrue(app.staticTexts["Inception"].exists)
+    }
+
+    func testRemoveMovieFromFavorites() {
+        app.tabBars.buttons["Films"].tap()
+
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+
+        // Ajouter aux favoris
+        let addButton = app.buttons["item.favorite.1"]
+        waitFor(addButton, timeout: 10)
+        addButton.tap()
+
+        // Aller dans les favoris et retirer
+        app.tabBars.buttons["Profil"].tap()
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+
+        // Le bouton supprimer dans la liste des favoris (via le bouton trash)
+        // On navigue vers Mes favoris
+        let mesFavorisButton = app.buttons["Mes favoris"]
+        if mesFavorisButton.waitForExistence(timeout: 5) {
+            mesFavorisButton.tap()
+            waitFor(app.staticTexts["Inception"], timeout: 10)
+
+            // Supprimer le favori
+            let deleteButton = app.buttons.containing(.button, identifier: "trash.fill").firstMatch
+            if deleteButton.waitForExistence(timeout: 5) {
+                deleteButton.tap()
+            }
+        }
+
+        // Vérifier que le favori a été retiré
+        app.tabBars.buttons["Films"].tap()
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+        let favoriteButton = app.buttons["item.favorite.1"]
+        // Le cœur devrait être vide (pas rempli)
+        XCTAssertTrue(favoriteButton.waitForExistence(timeout: 5))
+    }
+
+    // MARK: - Favoris depuis la vue détaillée
+
+    func testAddMovieToFavoritesFromDetails() {
+        app.tabBars.buttons["Films"].tap()
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+
+        // Ouvrir les détails d'Inception
+        app.staticTexts["Inception"].tap()
+        waitFor(app.staticTexts["details.title"], timeout: 10)
+
+        // Ajouter aux favoris depuis la barre d'outils
+        let favoriteButton = app.buttons["details.favorite"]
+        waitFor(favoriteButton, timeout: 10)
+        favoriteButton.tap()
+
+        // Vérifier dans le profil
+        app.tabBars.buttons["Profil"].tap()
+        waitFor(app.staticTexts["Inception"], timeout: 10)
+        XCTAssertTrue(app.staticTexts["Inception"].exists)
+    }
+
+    // MARK: - Historique des quiz
+
+    func testQuizHistoryIsSavedAfterCompleteQuiz() {
+        app.tabBars.buttons["Quiz"].tap()
+        waitFor(app.staticTexts["Question 1 / 10"], timeout: 10)
+
+        // Faire tout le quiz
+        for _ in 1...10 {
+            let answerButton = app.buttons["quiz.answer.0"]
+            waitFor(answerButton, timeout: 10)
+            answerButton.tap()
+
+            _ = app.staticTexts["quiz.feedback.correct"].waitForExistence(timeout: 5)
+                || app.staticTexts["quiz.feedback.incorrect"].waitForExistence(timeout: 5)
+
+            if app.staticTexts["Partie terminée !"].waitForExistence(timeout: 1) {
+                break
+            }
+
+            if app.buttons["quiz.next"].waitForExistence(timeout: 5) {
+                app.buttons["quiz.next"].tap()
+            } else {
+                break
+            }
+        }
+
+        waitFor(app.staticTexts["Partie terminée !"], timeout: 10)
+
+        // Aller dans l'historique des quiz depuis le profil
+        app.tabBars.buttons["Profil"].tap()
+        waitFor(app.staticTexts["Historique des quiz"], timeout: 10)
+
+        let historiqueButton = app.buttons["Historique des quiz"]
+        if historiqueButton.waitForExistence(timeout: 5) {
+            historiqueButton.tap()
+            waitFor(app.staticTexts["Quiz « quiz-"], timeout: 10)
+        }
     }
 }

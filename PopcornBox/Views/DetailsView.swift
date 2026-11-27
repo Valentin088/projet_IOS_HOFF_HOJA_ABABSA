@@ -5,9 +5,11 @@ struct DetailsView: View {
     
     // ✅ NOUVEAU : Propriétés pour les acteurs
     private let client: TMDBProviding
+    @StateObject private var dataViewModel = UserDataViewModel()
     @State private var cast: [Cast] = []
     @State private var isLoadingCast = false
     @State private var castError: String?
+    @State private var isFavorite = false
     
     init(item: FilmSerieItem) {
         self.item = item
@@ -124,7 +126,20 @@ struct DetailsView: View {
         }
         .navigationTitle("Détails")
         .navigationBarTitleDisplayMode(.inline)
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    Task {
+                        await dataViewModel.toggleFavorite(item)
+                        isFavorite = await dataViewModel.dataService.isFavorite(itemId: item.id, kind: item.kind)
+                    }
+                }) {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .foregroundStyle(isFavorite ? .red : .secondary)
+                }
+                .accessibilityIdentifier("details.favorite")
+            }
+        }
         .task {
             guard !isLoadingCast else { return }
             isLoadingCast = true
@@ -135,6 +150,9 @@ struct DetailsView: View {
                 castError = error.localizedDescription
             }
             isLoadingCast = false
+            
+            // Vérifier si l'item est déjà en favori
+            isFavorite = await dataViewModel.dataService.isFavorite(itemId: item.id, kind: item.kind)
         }
     }
 }

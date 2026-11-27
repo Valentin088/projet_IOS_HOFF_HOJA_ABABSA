@@ -2,8 +2,9 @@ import SwiftUI
 
 struct FilmSerieItemView: View {
     let item: FilmSerieItem
+    var isFavorite: Bool = false
+    var onToggleFavorite: (() -> Void)? = nil
 
-    // iOS/SwiftUI: `id` peut être utile pour List/ForEach.
     var id: Int { item.id }
 
     var body: some View {
@@ -50,6 +51,20 @@ struct FilmSerieItemView: View {
                             .lineLimit(2)
                     }
                 }
+
+                Spacer(minLength: 0)
+
+                if let onToggleFavorite {
+                    Button(action: onToggleFavorite) {
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
+                            .foregroundStyle(isFavorite ? .red : .secondary)
+                            .font(.title3)
+                            .padding(6)
+                            .background(.thinMaterial, in: Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("item.favorite.\(item.id)")
+                }
             }
         }
         .padding(.vertical, 4)
@@ -59,13 +74,12 @@ struct FilmSerieItemView: View {
     }
 }
 
-
 #Preview {
     NavigationStack {
         List {
             FilmSerieItemView(
                 item: FilmSerieItem(
-                    id : 1,
+                    id: 1,
                     kind: .movie,
                     title: "Exemple film",
                     snippet: "Un aperçu…",
@@ -80,7 +94,7 @@ struct FilmSerieItemView: View {
             )
             FilmSerieItemView(
                 item: FilmSerieItem(
-                    id : 2,
+                    id: 2,
                     kind: .series,
                     title: "Exemple série",
                     snippet: "Un aperçu…",
@@ -91,9 +105,11 @@ struct FilmSerieItemView: View {
                     releaseYear: 2023,
                     genreIDs: [18],
                     rating: 8.1
-                )
-            )
+                ),
+                isFavorite: true
+            ) {
+                print("Toggle favori")
+            }
         }
     }
 }
-

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct QuizView: View {
     @StateObject private var viewModel: QuizViewModel
+    @StateObject private var dataViewModel = UserDataViewModel()
 
     init() {
         let client: TMDBProviding = UITesting.isEnabled ? UITesting.Client() : TMDBClient()
@@ -30,6 +31,13 @@ struct QuizView: View {
         }
         .task {
             await viewModel.load()
+        }
+        .onChange(of: viewModel.state) { _, newState in
+            if newState == .finished {
+                Task {
+                    await dataViewModel.saveQuizResult(score: viewModel.score, total: viewModel.questions.count)
+                }
+            }
         }
     }
 

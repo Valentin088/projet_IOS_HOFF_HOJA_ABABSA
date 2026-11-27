@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SeriesView: View {
     @StateObject private var viewModel: BoxOfficeViewModel
+    @StateObject private var dataViewModel = UserDataViewModel()
     @State private var searchText = ""
 
     init() {
@@ -23,8 +24,17 @@ struct SeriesView: View {
                             .accessibilityIdentifier("series.empty")
                     } else {
                         List(viewModel.items) { item in
+                            let isFav = dataViewModel.favorites.contains { $0.itemId == item.id && $0.kind == item.kind }
                             NavigationLink(destination: DetailsView(item: item)) {
-                                        FilmSerieItemView(item: item)
+                                FilmSerieItemView(
+                                    item: item,
+                                    isFavorite: isFav,
+                                    onToggleFavorite: {
+                                        Task {
+                                            await dataViewModel.toggleFavorite(item)
+                                        }
+                                    }
+                                )
                             }
                             .accessibilityIdentifier("series.row.\(item.id)")
                         }
@@ -48,20 +58,14 @@ struct SeriesView: View {
             .task {
                 await viewModel.load()
             }
-            
+
             .task(id: searchText) {
-                // Si le champ est vide, on recharge les films populaires (optionnel)
                 guard !searchText.isEmpty else { return }
-                
+
                 do {
-                    // Met la tâche en pause pendant 0.5 seconde (500 000 000 nanosecondes)
                     try await Task.sleep(nanoseconds: 500_000_000)
-                    
-                    // Si l'utilisateur n'a pas tapé de nouvelle lettre pendant ce délai, la requête se lance
                     await viewModel.load(query: searchText)
                 } catch {
-                    // L'utilisateur a tapé une nouvelle lettre avant les 0.5s.
-                    // Task.sleep lève une erreur (CancellationError) et la requête est annulée.
                 }
             }
         }

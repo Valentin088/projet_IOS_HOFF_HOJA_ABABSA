@@ -41,6 +41,7 @@ struct FilmSerieItemView: View {
                         .font(.headline)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
+                        .accessibilityIdentifier("item.title")
 
                     if let snippet = item.snippet, !snippet.isEmpty {
                         Text(snippet)
@@ -52,6 +53,9 @@ struct FilmSerieItemView: View {
             }
         }
         .padding(.vertical, 4)
+        .accessibilityElement(children: .ignore)
+        .accessibilityIdentifier("item.row.\(item.id)")
+        .accessibilityLabel(Text(item.title))
     }
 }
 

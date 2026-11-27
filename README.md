@@ -13,6 +13,7 @@ Application iOS SwiftUI de découverte de films et séries, avec un quiz culture
   - 4 propositions par question, score, feedback immédiat et écran de résultat ;
   - possibilité de recommencer une partie.
 - **Tests unitaires** : 30 tests sur le générateur de questions et le `QuizViewModel`, avec un client TMDB simulé (`MockTMDBClient`).
+- **Tests UI** : 9 tests d'interface (navigation par onglets, chargement des listes, détails, recherche, flux complet du quiz et rejoue), lancés avec un client TMDB factice (`UITesting.Client`) pour éviter tout appel réseau.
 
 ## Structure du dépôt
 
@@ -25,10 +26,11 @@ Application iOS SwiftUI de découverte de films et séries, avec un quiz culture
 │   ├── Networking/             # Client et modèles TMDB
 │   ├── ViewModels/             # BoxOfficeViewModel, QuizViewModel
 │   ├── Views/                  # Écrans SwiftUI
+│   ├── UITesting.swift         # Infrastructure et client factice pour les tests UI
 │   └── Assets.xcassets/        # Icône, couleur d'accent, logo
 ├── PopcornBoxTests/            # Tests unitaires
 ├── PopcornBoxUITests/          # Tests d'interface
-└── PopcornBox.xcodeproj        # Projet Xcode (cibles PopcornBox et PopcornBoxTests)
+└── PopcornBox.xcodeproj        # Projet Xcode (cibles PopcornBox, PopcornBoxTests et PopcornBoxUITests)
 ```
 
 ## Prérequis
@@ -56,7 +58,9 @@ Dans Xcode :
 
 ## Lancer les tests
 
-Depuis Xcode : **⌘U** avec le schéma `PopcornBox` sélectionné.
+Depuis Xcode : **⌘U** avec le schéma `PopcornBox` sélectionné. Cela exécute les tests unitaires et les tests UI.
+
+Les tests UI lancent l'application avec l'argument `-UITesting` afin d'utiliser le client TMDB factice (`UITesting.Client`) et éviter tout appel réseau.
 
 En ligne de commande :
 

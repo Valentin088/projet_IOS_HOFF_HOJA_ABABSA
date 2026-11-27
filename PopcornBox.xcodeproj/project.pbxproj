@@ -14,11 +14,20 @@
 			remoteGlobalIDString = 4CB1EB602FCD7A8400949B72;
 			remoteInfo = PopcornBox;
 		};
+		AA11BB22000000000000000A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CB1EB592FCD7A8400949B72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA11BB22000000000000000D /* PopcornBoxUITests */;
+			remoteInfo = PopcornBoxUITests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4CB1EB612FCD7A8400949B72 /* PopcornBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA11BB220000000000000001 /* PopcornBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA11BB220000000000000010 /* PopcornBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA11BB220000000000000017 /* PopcornBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornBoxUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -98,6 +107,7 @@
 			children = (
 				4CB1EB612FCD7A8400949B72 /* PopcornBox.app */,
 				AA11BB220000000000000001 /* PopcornBoxTests.xctest */,
+				AA11BB220000000000000010 /* PopcornBoxUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,11 +163,45 @@
 		};
 /* End PBXNativeTarget section */
 
+/* Begin PBXNativeTarget section for UI tests - added */
+		AA11BB22000000000000000D /* PopcornBoxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA11BB220000000000000016 /* Build configuration list for PBXNativeTarget "PopcornBoxUITests" */;
+			buildPhases = (
+				AA11BB220000000000000011 /* Sources */,
+				AA11BB220000000000000012 /* Frameworks */,
+				AA11BB220000000000000013 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA11BB22000000000000000E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4CB1EBB62FCD7C7F00949B72 /* PopcornBoxUITests */,
+			);
+			name = PopcornBoxUITests;
+			packageProductDependencies = (
+			);
+			productName = PopcornBoxUITests;
+			productReference = AA11BB220000000000000010 /* PopcornBoxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXTargetDependency section */
 		AA11BB220000000000000008 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CB1EB602FCD7A8400949B72 /* PopcornBox */;
 			targetProxy = AA11BB220000000000000009 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXTargetDependency section for UI tests - added */
+		AA11BB22000000000000000E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CB1EB602FCD7A8400949B72 /* PopcornBox */;
+			targetProxy = AA11BB22000000000000000A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -194,6 +238,7 @@
 			targets = (
 				4CB1EB602FCD7A8400949B72 /* PopcornBox */,
 				AA11BB220000000000000003 /* PopcornBoxTests */,
+				AA11BB22000000000000000D /* PopcornBoxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +270,38 @@
 		};
 		AA11BB220000000000000005 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXBuildFile section for UI tests - added */
+		AA11BB220000000000000014 /* PBXBuildFile */ = {
+			isa = PBXBuildFile;
+			fileRef = AA11BB220000000000000017 /* PopcornBoxUITests.swift */;
+		};
+/* End PBXBuildFile section */
+
+/* Begin PBXSourcesBuildPhase section for UI tests - added */
+		AA11BB220000000000000011 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA11BB220000000000000014 /* PBXBuildFile */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA11BB220000000000000012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA11BB220000000000000013 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -455,6 +532,100 @@
 			};
 			name = Release;
 		};
+		AA11BB22000000000000001C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA11BB22000000000000001D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -481,6 +652,15 @@
 			buildConfigurations = (
 				AA11BB22000000000000000A /* Debug */,
 				AA11BB22000000000000000B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA11BB220000000000000016 /* Build configuration list for PBXNativeTarget "PopcornBoxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA11BB22000000000000001C /* Debug */,
+				AA11BB22000000000000001D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,34 +1,46 @@
 import SwiftUI
 
 struct MoviesView: View {
-    @StateObject private var viewModel = BoxOfficeViewModel(mediaType: .movie)
+    @StateObject private var viewModel: BoxOfficeViewModel
     @State private var searchText = ""
-    
+
+    init() {
+        let client: TMDBProviding = UITesting.isEnabled ? UITesting.Client() : TMDBClient()
+        _viewModel = StateObject(wrappedValue: BoxOfficeViewModel(mediaType: .movie, client: client))
+    }
+
     var body: some View {
         NavigationView {
             Group {
                 switch viewModel.state {
                 case .idle, .loading:
                     ProgressView("Chargement des films...")
+                        .accessibilityIdentifier("movies.loading")
                 case .loaded:
                     if viewModel.items.isEmpty {
                         Text("Aucun film trouvé")
                             .foregroundColor(.secondary)
+                            .accessibilityIdentifier("movies.empty")
                     } else {
                         List(viewModel.items) { item in
                             NavigationLink(destination: DetailsView(item: item)) {
                                             FilmSerieItemView(item: item)
                             }
+                            .accessibilityIdentifier("movies.row.\(item.id)")
                         }
+                        .accessibilityIdentifier("movies.list")
                     }
                 case .error(let message):
                     VStack(spacing: 10) {
                         Text("Une erreur est survenue")
                             .font(.headline)
+                            .accessibilityIdentifier("movies.error.title")
                         Text(message)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
+                            .accessibilityIdentifier("movies.error.message")
                     }
+                    .accessibilityIdentifier("movies.error")
                 }
             }
             .navigationTitle("Films")

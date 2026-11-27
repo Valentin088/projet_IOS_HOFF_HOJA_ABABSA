@@ -4,10 +4,15 @@ struct DetailsView: View {
     let item: FilmSerieItem
     
     // ✅ NOUVEAU : Propriétés pour les acteurs
-    private let client: TMDBClient = TMDBClient()
+    private let client: TMDBProviding
     @State private var cast: [Cast] = []
     @State private var isLoadingCast = false
     @State private var castError: String?
+    
+    init(item: FilmSerieItem) {
+        self.item = item
+        self.client = UITesting.isEnabled ? UITesting.Client() : TMDBClient()
+    }
     
     var body: some View {
         ScrollView {
@@ -23,11 +28,13 @@ struct DetailsView: View {
                 }
                 .frame(maxHeight: 400)
                 .padding(.top)
+                .accessibilityIdentifier("details.poster")
                 
                 VStack(alignment: .leading, spacing: 15) {
                     Text(item.title)
                         .font(.title)
                         .fontWeight(.bold)
+                        .accessibilityIdentifier("details.title")
                     
                     Text("Synopsis")
                         .font(.headline)
@@ -37,10 +44,12 @@ struct DetailsView: View {
                         Text(snippet)
                             .font(.body)
                             .lineSpacing(5)
+                            .accessibilityIdentifier("details.synopsis")
                     } else {
                         Text("Aucun synopsis disponible.")
                             .font(.body)
                             .foregroundColor(.secondary)
+                            .accessibilityIdentifier("details.synopsis")
                     }
                 }
                 .padding(.horizontal)
@@ -52,10 +61,12 @@ struct DetailsView: View {
 
                     if isLoadingCast {
                         ProgressView("Chargement des acteurs...")
+                            .accessibilityIdentifier("details.loading.cast")
                     } else if let castError {
                         Text(castError)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
+                            .accessibilityIdentifier("details.error.cast")
                     } else if cast.isEmpty {
                         Text("Aucun acteur trouvé.")
                             .font(.subheadline)
@@ -95,6 +106,7 @@ struct DetailsView: View {
                                         Text(actor.name)
                                             .font(.subheadline)
                                             .fontWeight(.semibold)
+                                            .accessibilityIdentifier("details.cast.name")
                                         Text(actor.character)
                                             .font(.caption)
                                             .foregroundColor(.secondary)

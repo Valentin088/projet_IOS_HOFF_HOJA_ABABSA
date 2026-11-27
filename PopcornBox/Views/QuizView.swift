@@ -1,7 +1,12 @@
 import SwiftUI
 
 struct QuizView: View {
-    @StateObject private var viewModel = QuizViewModel()
+    @StateObject private var viewModel: QuizViewModel
+
+    init() {
+        let client: TMDBProviding = UITesting.isEnabled ? UITesting.Client() : TMDBClient()
+        _viewModel = StateObject(wrappedValue: QuizViewModel(client: client))
+    }
 
     var body: some View {
         NavigationStack {

@@ -8,6 +8,7 @@ struct FilmSerieItemView: View {
             Text(item.title)
                 .font(.headline)
                 .lineLimit(2)
+                .accessibilityIdentifier("item.title")
             if let snippet = item.snippet {
                 Text(snippet)
                     .font(.subheadline)
@@ -16,6 +17,8 @@ struct FilmSerieItemView: View {
             }
         }
         .padding(.vertical, 6)
+        .accessibilityIdentifier("item.\(item.id)")
+        .accessibilityLabel(Text(item.title))
     }
 }
 

@@ -8,14 +8,17 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 60)
+                    .accessibilityIdentifier("home.logo")
 
                 Text("PopCornBox")
                     .font(.headline)
+                    .accessibilityIdentifier("home.title")
 
                 Text("Les films et séries du moment, directement sur votre poignet.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
+                    .accessibilityIdentifier("home.subtitle")
             }
             .padding()
         }
